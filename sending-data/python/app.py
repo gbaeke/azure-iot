@@ -34,5 +34,9 @@ message = {
     "temperature": 27.8
 }
 
-client.publish("devices/myDevice/messages/events/", payload=json.dumps(message), qos=0, retain=False)
+# IoT Hub does not support qos 2 (will close the connection)
+# retain should be set to false; if set to true mqtt-retain=true is sent as a prop
+client.publish("devices/myDevice/messages/events/", payload=json.dumps(message), qos=1, retain=True)
+
+# although not strictly needed here, loop forever which also will show connection retries and PINGs
 client.loop_forever()
