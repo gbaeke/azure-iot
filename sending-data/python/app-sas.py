@@ -42,7 +42,7 @@ client.on_connect=on_connect
 client.on_log=on_log
 client.on_publish=on_publish
 
-# generate token
+# generate token (Note: would need to be regenerated before expiration)
 token = generate_sas_token("iothub-geba-s1.azure-devices.net", config.key, "", expiry=3600)
 
 # set user name and password; token is set in config.py
