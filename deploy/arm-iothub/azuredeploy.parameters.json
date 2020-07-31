@@ -1,0 +1,23 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "iotHubName": {
+            "value": "iothub-geba-s1"
+        },
+        "policyName": {
+            "value": "ServiceConnect"
+        },
+        "tagValues": {
+            "value": {
+                "environment": "test",
+                "project": "learning",
+                "billTo": "IT",
+                "managedBy": "user@domain.com"
+            }
+        },
+        "capacity": {
+            "value": 2
+        }
+    }
+}

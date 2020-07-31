@@ -1,0 +1,67 @@
+
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "tagValues": {
+            "type": "object",
+            "defaultValue": {
+                "environment": "test",
+                "project": "learning",
+                "billTo": "IT",
+                "managedBy": "user@domain.com"
+            }
+        },
+        "iotHubName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the IoT Hub"
+            }
+        },
+        "capacity": {
+            "type": "int",
+            "metadata": {
+                "description": "Number of IoT Hub units"
+            }
+        },
+        "policyName": {
+            "type": "string",
+            "metadata":{
+                "description": "Name of policy to create"
+            }         
+
+        }        
+    },
+    "resources": [
+        {
+            "name": "[parameters('iotHubName')]",
+            "type": "Microsoft.Devices/IotHubs",
+            "apiVersion": "2018-04-01",
+            "location": "[resourceGroup().location]",
+            "tags": "[parameters('tagValues')]",
+            "properties": {
+                "authorizationPolicies": [
+                    {
+                        "keyName": "iothubowner",
+                        "rights": "RegistryRead, RegistryWrite, ServiceConnect, DeviceConnect"
+                    },
+                    {
+                        "keyName": "[parameters('policyName')]",
+                        "rights": "ServiceConnect"
+                    }],
+                "features": "None"
+                },
+                "sku": {
+                    "name": "S1",
+                    "capacity": "[parameters('capacity')]"
+                }
+            }
+        ],
+        "outputs": {
+            "EventHubEndpoint": {
+                "type": "string",                
+                "value": "[reference(concat('Microsoft.Devices/IotHubs/', parameters('iotHubName')),'2018-04-01').eventHubEndpoints.events.endpoint]"
+            }
+
+        }
+    }
