@@ -11,7 +11,7 @@ from azure.iot.device.aio import IoTHubDeviceClient
 from azure.iot.device import Message
 import config
 
-messages_to_send = 10
+messages_to_send = 100
 
 
 async def main():
@@ -33,6 +33,10 @@ async def main():
 
         # custom_properties is a dictionary of application properaties
         msg.custom_properties["tornado-warning"] = "yes"
+
+        # json format
+        msg.content_encoding = "UTF-8"
+        msg.content_type = "application/json"
 
         # send the message and wait until sent
         await device_client.send_message(msg)
