@@ -9,9 +9,16 @@ async def myCoroutine(id):
 async def main():
     tasks = []
     for i in range(10):
-        tasks.append(asyncio.ensure_future(myCoroutine(i)))
+        # use of ensure_future
+        # tasks.append(asyncio.ensure_future(myCoroutine(i)))
+        
+        # loop.create_task can also be used
+        tasks.append(loop.create_task(myCoroutine(i)))
 
     await asyncio.gather(*tasks)
+
+    # shorter form
+    # await asyncio.gather(*[myCoroutine(i) for i in range(10)])
 
 
 loop = asyncio.get_event_loop()
