@@ -12,6 +12,7 @@ from azure.iot.device import Message
 import config
 import random
 import time
+import datetime
 import json
 
 async def main():
@@ -28,6 +29,7 @@ async def main():
         print("sending message with temperature " + str(temperature))
 
         body = {
+            "time": str(datetime.datetime.utcnow()),
             "temperature": temperature
         }
 

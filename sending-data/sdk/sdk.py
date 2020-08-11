@@ -11,7 +11,7 @@ from azure.iot.device.aio import IoTHubDeviceClient
 from azure.iot.device import Message
 import config
 
-messages_to_send = 10
+messages_to_send = 100
 
 
 async def main():
