@@ -1,0 +1,1 @@
+az storage blob upload --account-name signalrclientwithauth --container-name \$web --file index-auth.html --name index.html

@@ -16,4 +16,11 @@ Notes:
 - Adjust the CORS settings on the Function App: if you run index.html on http://localhost:5500 then add this to the *Allowed Origins* list; in addition, also set *Enable Access-Control-Allow-Credentials" (see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials#:~:text=For%20a%20CORS%20request%20with,re%20opting%20in%20to%20including)
 
 
+# SignalR with Authentication
+
+Requires the following:
+- Host the negotiate endpoint on a Function App and enable Authentication (with Azure AD; Express is fine which creates an app registration in Azure AD)
+- Host the index-auth-html on a static website via storage account and add the https://... URL to the Allowed External Redirect URLs in the Authentication section of the Function App
+
+
 
