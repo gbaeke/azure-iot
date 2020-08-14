@@ -1,0 +1,22 @@
+module.exports = function (context, input) {
+    context.log('Documents: ', input);
+
+    input.forEach(event => {
+        signalRMessage = {
+            "time": event.windowendtime,
+            "device": event.device,
+            "building": event.building,
+            "temperature": event.temperature
+        }
+
+        
+        context.bindings.temp = [{
+            "target": "newMessage",
+            "groupName": signalRMessage.device,
+            "arguments": [ signalRMessage ]
+        }];
+
+    });
+
+    context.done();
+};

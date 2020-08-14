@@ -19,7 +19,7 @@ Notes:
 # SignalR with Authentication
 
 Requires the following:
-- Host the negotiate endpoint on a Function App and enable Authentication (with Azure AD; Express is fine which creates an app registration in Azure AD)
+- Host the negotiate endpoint on a Function App and enable Authentication (with Azure AD; Express is fine which creates an app registration in Azure AD automatically)
 - Host the index-auth-html on a static website via storage account and add the https://... URL to the Allowed External Redirect URLs in the Authentication section of the Function App
 
 

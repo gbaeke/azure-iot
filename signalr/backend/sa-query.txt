@@ -1,0 +1,18 @@
+WITH Q AS (
+    SELECT
+        time,
+        GetMetadataPropertyValue(iothub, '[User].[building]') as building,
+        iothub.IoTHub.ConnectionDeviceId as device,
+        temperature
+    FROM
+        iothub TIMESTAMP BY time
+)
+SELECT
+    device,
+    building,
+    System.TimeStamp() as windowendtime,
+    AVG(temperature) as temperature
+INTO cosmos
+FROM Q
+PARTITION BY building
+GROUP BY building, device, TumblingWindow(second, 10)
