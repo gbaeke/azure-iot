@@ -11,5 +11,11 @@ The Python SDK only supports MQTT (on 31/7/2020)
 - receive C2D messages
 - ...
 
+To run sdk.py, install the azure-iot-device library. See https://pypi.org/project/azure-iot-device/. Install with:
+
+pip3 install azure-iot-device
 
 
+The Azure IoT SDK for Python supports the use of connection strings for a device. You can get the connection string from VS Code by right clicking the device and clicking **Copy Device Connection String**. Add the connection string to a **connstr** variable in **config.py**
+
+The scripts sends 100 messages. This is configurable.

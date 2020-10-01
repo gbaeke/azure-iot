@@ -20,12 +20,12 @@ if __name__ == "__main__":
     s = time.perf_counter()
 
     # this will not work below Python 3.7
-    # asyncio.run(main())
+    asyncio.run(main())
     
     # Note: in Python 3.6 you would use the event loop directly
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(main())
-    loop.close()
+    #loop = asyncio.get_event_loop()
+    #loop.run_until_complete(main())
+    #loop.close()
     
     elapsed = time.perf_counter() - s
     print(f"{__file__} executed in {elapsed:0.2f} seconds.")

@@ -3,6 +3,7 @@ import json
 import os
 import config
 
+# packages required to create the SAS token
 from base64 import b64encode, b64decode
 from hashlib import sha256
 from time import time

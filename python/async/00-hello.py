@@ -5,8 +5,8 @@ async def main():
     await asyncio.sleep(1.0)
     print(f'{time.ctime()} Goodbye!')
 
-# asyncio.run(main())
+asyncio.run(main())
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(main())
-loop.close()
+#loop = asyncio.get_event_loop()
+#loop.run_until_complete(main())
+#loop.close()
