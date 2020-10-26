@@ -30,8 +30,11 @@ async def main():
 
         body = {
             "time": str(datetime.datetime.utcnow()),
-            "temperature": temperature
+            "temperature": temperature,
+            "deviceId": "myDevice"
         }
+
+        
 
         msg = Message(json.dumps(body))
 
@@ -39,7 +42,7 @@ async def main():
         msg.message_id = uuid.uuid4()
 
         # custom_properties is a dictionary of application properaties
-        if temperature > 27:
+        if temperature > 25:
             msg.custom_properties["alert"] = "too hot"
             print("we sent an alert")
 
